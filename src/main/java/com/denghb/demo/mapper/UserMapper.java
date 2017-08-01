@@ -5,7 +5,7 @@ import com.denghb.demo.domain.User;
 import java.util.List;
 
 /**
- * Created by ppd on 2017/8/1.
+ * Created by denghb on 2017/8/1.
  */
 public interface UserMapper {
 

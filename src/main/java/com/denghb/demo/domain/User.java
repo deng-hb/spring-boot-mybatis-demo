@@ -3,7 +3,7 @@ package com.denghb.demo.domain;
 import java.io.Serializable;
 
 /**
- * Created by ppd on 2017/8/1.
+ * Created by denghb on 2017/8/1.
  */
 public class User implements Serializable {
 
