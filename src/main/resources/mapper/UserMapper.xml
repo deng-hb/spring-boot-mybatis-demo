@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.denghb.demo.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.denghb.demo.domain.User">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="mame" property="mame" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, name, email
+    </sql>
+
+    <select id="listAll" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM user
+    </select>
+
+    <select id="queryById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM user
+        WHERE id = #{id}
+    </select>
+
+    <insert id="create" parameterType="com.denghb.demo.domain.User">
+        INSERT INTO
+        user
+        (name,email)
+        VALUES
+        (#{name}, #{email})
+    </insert>
+
+    <update id="update" parameterType="com.denghb.demo.domain.User">
+        UPDATE
+        user
+        SET
+        <if test="name != null">name = #{name},</if>
+        <if test="email != null">email = #{email}</if>
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE FROM
+        user
+        WHERE
+        id =#{id}
+    </delete>
+
+</mapper>
